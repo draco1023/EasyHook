@@ -31,7 +31,7 @@
       <Output TaskParameter="Value" PropertyName="AssemblyTitlePostfix" />
     </CreateProperty>
     <!-- Increment Version number in Version.txt -->
-    <Version VersionFile="Version.txt" BuildType="Automatic" RevisionType="BuildIncrement">
+    <Version VersionFile="Version.txt" BuildType="None" RevisionType="None">
       <Output TaskParameter="Major" PropertyName="Major" />
       <Output TaskParameter="Minor" PropertyName="Minor" />
       <Output TaskParameter="Build" PropertyName="Build" />
@@ -98,7 +98,7 @@
       <CommonFiles Include=".\Public\easyhook.h" />
     </ItemGroup>
     <!-- Note: These ItemGroup's must be child of Target to ensure that the Include paths are evaluated AFTER the build has completed -->
-    <ItemGroup>
+    <!-- <ItemGroup>
       <NetFX35Files Include="$(FX35BuildDir)\EasyHook*.dll" />
       <NetFX35Files Include="$(FX35BuildDir)\EasyLoad*.dll" />
       <NetFX35Files Include="$(FX35BuildDir)\EasyHook*.lib" />
@@ -111,7 +111,7 @@
       <NetFX35Files Include="$(FX35BuildDir)\ComplexParameterInject.dll" />
       <NetFX35Files Include="$(FX35BuildDir)\TestFuncHooks.exe" />
       <NetFX35Files Include="$(FX35BuildDir)\*.sys" />
-    </ItemGroup>
+    </ItemGroup> -->
     <ItemGroup>
       <NetFX4Files Include="$(FX4BuildDir)\EasyHook*.dll" />
       <NetFX4Files Include="$(FX4BuildDir)\EasyLoad*.dll" />
@@ -129,16 +129,16 @@
     </ItemGroup>
     <MakeDir Directories = "$(PackageDir)"
             Condition = "!Exists('$(PackageDir)')" />
-    <MakeDir Directories = "$(PackageDir)\NetFX3.5"
-            Condition = "!Exists('$(PackageDir)\NetFX3.5')" />
+    <!-- <MakeDir Directories = "$(PackageDir)\NetFX3.5"
+            Condition = "!Exists('$(PackageDir)\NetFX3.5')" /> -->
     <MakeDir Directories = "$(PackageDir)\NetFX4.0"
             Condition = "!Exists('$(PackageDir)\NetFX4.0')" />
-    <Copy SourceFiles="@(CommonFiles)"
-          DestinationFolder="$(PackageDir)\NetFX3.5" />
+    <!-- <Copy SourceFiles="@(CommonFiles)"
+          DestinationFolder="$(PackageDir)\NetFX3.5" /> -->
     <Copy SourceFiles="@(CommonFiles)"
           DestinationFolder="$(PackageDir)\NetFX4.0" />
-    <Copy SourceFiles="@(NetFX35Files)"
-          DestinationFolder="$(PackageDir)\NetFX3.5" />
+    <!-- <Copy SourceFiles="@(NetFX35Files)"
+          DestinationFolder="$(PackageDir)\NetFX3.5" /> -->
     <Copy SourceFiles="@(NetFX4Files)"
           DestinationFolder="$(PackageDir)\NetFX4.0" />
   </Target>
